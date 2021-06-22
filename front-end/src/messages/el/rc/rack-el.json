@@ -1,0 +1,15 @@
+{
+    "rc.rack.rackData" : "Στοιχεία Ραφιού",
+
+    "rc.rack.id" : "Α/Α",
+    "rc.rack.code" : "Κωδ. Ραφιού",
+    "rc.rack.warehouse" : "Κωδ. Αποθήκης",
+    "rc.rack.invoices" : "Αποδείξεις Ραφιού",
+
+    "rc.rack.saveSuccess" : "Το ράφι αποθηκεύτηκε με επιτυχία",
+    "rc.rack.deleteSuccess" : "Το ράφι διαγράφηκε με επιτυχία",
+
+    "rc.rack.invoiceActionsNumber": "Αριθμός Ενεργειών",
+    "rc.rack.addInvoiceAction": "Προσθήκη Ενέργειας Απόδειξης"
+
+}

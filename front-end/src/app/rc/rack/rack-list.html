@@ -1,0 +1,105 @@
+<div>
+    <br/>
+    
+    <button class="btn btn-primary" ng-click="newRack()">{{::'global.newRecord' | translate}}</button>
+    
+    <br/>
+    <br/>
+
+    <div class="row">
+
+        <form class="form-horizontial" style="padding-left:5%;padding-right:5%">
+
+            <legend>{{::'global.args' | translate}}</legend>
+    
+            <div class="row">
+
+                <div class="col-md-6">
+                    
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="form-label" for="id">{{::'rc.rack.id' | translate}}</label>
+                            <input class="form-control" type="text" name="id" ng-model="rackArgs.id">
+                        </div>
+                    </div>                 
+
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="form-label" for="code">{{::'rc.rack.code' | translate}}</label>
+                            <input class="form-control" type="text" name="code" ng-model="rackArgs.name">
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-md-6">
+
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="form-label" for="description">{{::'rc.rack.warehouse' | translate}}</label>
+                                <!-- TODO: Μετά τη διόρθωση του api, πρόσθεσε ng-model="warehouseArgs.rackId" -->
+                                <!-- <input class="form-control" type="text" name="description" ng-model="rackArgs.warehouseId"> -->
+                    
+                                <select chosen="{{::$root.chosenAttrs}}" class="form-control" ng-model="rackArgs.warehouseId" name="warehouse" ng-options="warehouse.id as warehouse.name for warehouse in warehouses">
+                                    <option value=""></option>
+                                </select>
+                        </div>
+                    </div>
+                                      
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="form-label" for="rack">{{::'menu.rc' | translate}}</label>
+                            <!-- TODO: Μετά τη διόρθωση του api, πρόσθεσε ng-model="warehouseArgs.rackId" -->
+                            <input class="form-control" type="text" name="rack">
+                        </div>
+                    </div>
+                    
+                </div>
+
+            </div>
+    
+            <br/>
+            
+            <div style="text-align: center;">
+                <button class="btn btn-info" ng-click="retrieveData()">{{::'global.retrieveData' | translate}}</button>
+            </div>
+    
+        </form>
+
+    </div>
+
+    <br/>
+
+    <legend>{{::'menu.rc.list' | translate}}</legend>
+
+    <!-- TODO: pagination στον πίνακα, να εμφανίζονται σε σελίδες: π.χ. ανά 10 -->
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+
+            <thead>
+                <th ng-click="doSort('id')">{{::'rc.rack.id' | translate}}</th>
+                <th ng-click="doSort('code')">{{::'rc.rack.code' | translate}}</th>
+                <th ng-click="doSort('warehouseId')">{{::'rc.rack.warehouse' | translate}}</th>
+                <th>{{::'rc.rack.invoiceActionsNumber' | translate}}</th>
+                <th>{{::'global.extraActions' | translate}}</th>
+            </thead>
+
+            <tbody>
+                <tr ng-repeat="rc in racks | orderBy:sortBy:reverse">
+                    <td>{{rc.id}}</td>
+                    <td>{{rc.code}}</td>
+                    <td>{{rc.warehouseId}}</td>
+                    <td>{{rc.invoices.length}}</td>
+                    <td>
+                        <button class="btn btn-info" ng-click="getRack(rc.id)">{{::'global.open' | translate}}</button>
+                        <button class="btn btn-danger" ng-click="deleteRack(rc.id)">{{::'global.delete' | translate}}</button>
+                    </td>
+                </tr>
+            </tbody>
+
+        </table>
+    </div>
+    
+</div>
+

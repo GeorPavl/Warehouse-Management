@@ -1,0 +1,58 @@
+<div auth-directive class="page-sidebar navbar-collapse collapse page-sidebar-wrapper">
+    
+    <ul class="page-sidebar-menu" data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200" ng-class="{'page-sidebar-menu-closed': settings.layout.pageSidebarClosed}">
+        
+        <li ng-if="isLoggedIn()" class="nav-item" ng-class="{active: isStNav()}">
+            <a class="nav-link nav-toggle" ui-sref="app.wr.warehouse.list" aria-haspopup="true" aria-expanded="false">
+                <i class="fa fa-cube"></i>{{'menu.wr' | translate}}
+            </a>
+        </li>
+
+        <li ng-if="isLoggedIn()" class="nav-item" ng-class="{active: isStNav()}">
+            <a class="nav-link nav-toggle" ui-sref="app.rc.rack.list" aria-haspopup="true" aria-expanded="false">
+                <i class="fa fa-cube"></i>{{'menu.rc' | translate}}
+            </a>
+        </li>
+
+        <li ng-if="isLoggedIn()" class="nav-item" ng-class="{active: isStNav()}">
+            <a class="nav-link nav-toggle" ui-sref="app.np.invoiceProduct.list" aria-haspopup="true" aria-expanded="false">
+                <i class="fa fa-cube"></i>{{'menu.np' | translate}}
+            </a>
+        </li>
+
+        <li ng-if="isLoggedIn()" class="nav-item" ng-class="{active: isStNav()}">
+            <a class="nav-link nav-toggle" ui-sref="app.pr.product.list" aria-haspopup="true" aria-expanded="false">
+                <i class="fa fa-cube"></i>{{'menu.pr' | translate}}
+            </a>
+        </li>
+
+        <li ng-if="isLoggedIn()" class="nav-item" ng-class="{active: isStNav()}">
+            <a class="nav-link nav-toggle" ui-sref="app.nv.invoice.list" aria-haspopup="true" aria-expanded="false">
+                <i class="fa fa-cube"></i>{{'menu.nv' | translate}}
+            </a>
+        </li>
+
+        <li ng-if="isLoggedIn()" class="nav-item" ng-class="{active: isStNav()}">
+            <a class="nav-link nav-toggle" ui-sref="app.em.employee.list" aria-haspopup="true" aria-expanded="false">
+                <i class="fa fa-cube"></i>{{'menu.em' | translate}}
+            </a>
+        </li>
+        
+        <!-- <li ng-if="isLoggedIn()" class="nav-item" ng-class="{active: isPrNav()}">
+            <a class="nav-link nav-toggle" aria-haspopup="true" aria-expanded="false">
+                <i class="fa fa-exchange"></i>{{'menu.pr' | translate}}
+                <span class="arrow" ng-class="{open: isPrNav()}"></span>
+            </a>
+            <ul class="sub-menu">
+                <li>
+                    <a ui-sref="app.pr.deceased.list">{{'menu.pr.deceased.list' | translate}}</a>
+                </li>
+                <li>
+                    <a ui-sref="app.pr.familyGraveRight.list">{{'menu.pr.familyGraveRight.list' | translate}}</a>
+                </li>
+            </ul>
+        </li> -->
+    
+    </ul>
+
+</div>

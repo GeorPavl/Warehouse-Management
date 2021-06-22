@@ -1,0 +1,20 @@
+{
+    "nv.invoice.invoiceData": "Στοιχεία Απόδειξης",
+
+    "nv.invoice.id" : "Α/Α",
+    "nv.invoice.description": "Περιγραφή",
+    "nv.invoice.employee": "Υπάλληλος",
+    "nv.invoice.date": "Ημερομηνία",
+    "nv.invoice.afterDate": "Ημερομηνία από",
+    "nv.invoice.beforeDate": "Ημερομηνία έως",
+    "nv.invoice.type": "Τύπος",
+    "nv.invoice.import": "Δελτίο εισαγωγής",
+    "nv.invoice.export": "Δελτίο εξαγωγής",
+    "nv.invoice.products": "Προϊόντα",
+    
+    "nv.invoice.saveSuccess": "Η απόδειξη αποθηκεύτηκε με επιτυχία",
+    "nv.invoice.deleteSuccess": "Η απόδειξη διαγράφηκε με επιτυχία",
+
+    "nv.invoice.invoiceActionsNumber" : "Αριθμός Ενεργειών",
+    "nv.invoice.addInvoiceAction" : "Προσθήκη Ενέργειας Απόδειξης"
+}

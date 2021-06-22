@@ -1,0 +1,17 @@
+{
+    "wr.warehouse.warehouseData" : "Στοιχεία Αποθήκης",
+    
+    "wr.warehouse.id" : "Α/Α",
+    "wr.warehouse.name" : "Όνομα",
+    "wr.warehouse.description" : "Περιγραφή",
+
+    "wr.warehouse.saveSuccess": "Η αποθήκη αποθηκεύτηκε με επιτυχία",
+    "wr.warehouse.deleteSuccess": "Η αποθήκη διαγράφηκε με επιτυχία",
+
+    "wr.warehouse.rackCode": "Κωδικός Ραφιού",
+    "wr.warehouse.addRack": "Προσθήκη Ραφιού",
+    "wr.warehouse.racksNumber" : "Σύνολο Ραφιών",
+    "wr.warehouse.invoiceActionsNumber" : "Σύνολο Ενεργειών",
+    "wr.warehouse.productsNumber" : "Σύνολο Προϊόντων",
+    "wr.warehouse.invoicesNumber" : "Σύνολο Αποδείξεων"
+}

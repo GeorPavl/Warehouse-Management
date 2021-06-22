@@ -1,0 +1,17 @@
+{
+
+    "em.employee.employeeData": "Στοιχεία Υπαλλήλου",
+
+    "em.employee.id": "Α/Α",
+    "em.employee.firstName": "Όνομα",
+    "em.employee.lastName": "Επίθετο",
+    "em.employee.email": "E-mail",
+    "em.employee.invoices": "Αποδείξεις Υπαλλήλου",
+
+    "em.employee.saveSuccess": "Ο/Η υπάλληλος αποθηκεύτηκε με επιτυχία",
+    "em.employee.deleteSuccess": "Ο/Η υπάλληλος διαγράφηκε με επιτυχία",
+
+    "em.employee.invoicesNumber": "Αριθμός Αποδείξεων",
+    "em.employee.addInvoice": "Προσθήκη Απόδειξης"
+    
+}

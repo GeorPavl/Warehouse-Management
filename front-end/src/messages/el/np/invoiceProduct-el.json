@@ -1,0 +1,19 @@
+{
+
+    "np.invoiceProduct": "Ενέργεια απόδειξης",
+    "np.invoiceProduct.invoiceProductData" : "Στοιχεία Ενέργειας Απόδειξης",
+
+    "np.invoiceProduct.id": "Α/Α",
+    "np.invoiceProduct.product": "Προϊόν",
+    "np.invoiceProduct.rack": "Ράφι",
+    "np.invoiceProduct.invoice": "Απόδειξη",
+    "np.invoiceProduct.action": "Ενέργεια",
+    "np.invoiceProduct.actionDate": "Ημερομηνία Ενέργειας",
+    "np.invoiceProduct.quantity" : "Ποσότητα",
+    "np.invoiceProduct.employeeId": "Κωδικός Υπαλλήλου",
+    "np.invoiceProduct.employeeLastName": "Επίθετο Υπαλλήλου",
+
+    "np.invoiceProduct.saveSuccess": "Η ενέργεια αποθηκεύτηκε με επιτυχία",
+    "np.invoiceProduct.deleteSuccess": "Η ενέργεια διαγράφηκε με επιτυχία"
+    
+}

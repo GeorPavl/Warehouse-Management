@@ -1,0 +1,197 @@
+<div>
+    <br/>
+    
+    <button class="btn btn-primary" ng-click="newInvoiceProduct()">{{::'global.newRecord' | translate}}</button>
+    
+    <br/>
+    <br/>
+
+    <div class="row">
+
+        <form class="form-horizontial" style="padding-left:5%;padding-right:5%">
+
+            <legend>{{::'global.args' | translate}}</legend>
+    
+            <div class="row">
+
+                <div class="col-md-6">
+                        
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="form-label" for="id">{{::'np.invoiceProduct.id' | translate}}</label>
+                            <input class="form-control" type="text" name="id" ng-model="invoiceProductArgs.id">
+                        </div>
+                    </div>                 
+
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="form-label" for="product">{{::'np.invoiceProduct.product' | translate}}</label>
+                            <input class="form-control" type="text" name="productId" ng-model="invoiceProductArgs.productId">
+                            <select ng-disabled="isDisabled" chosen="{{::$root.chosenAttrs}}" class="form-control" ng-model="invoiceProductArgs.productId" name="product" ng-options="product.id as product.id for product in products">
+                                <option value=""></option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="form-label" for="productTitle">{{::'pr.product.title' | translate}}</label>
+                            <input class="form-control" type="text" name="productTitle" ng-model="invoiceProductArgs.productTitle">
+                            <select ng-disabled="isDisabled" chosen="{{::$root.chosenAttrs}}" class="form-control" ng-model="invoiceProductArgs.productTitle" name="product" ng-options="product.title as product.title for product in products">
+                                <option value=""></option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="form-label" for="productBarcode">{{::'pr.product.barcode' | translate}}</label>
+                            <input class="form-control" type="text" name="productBarcode" ng-model="invoiceProductArgs.productBarcode">
+                            <select ng-disabled="isDisabled" chosen="{{::$root.chosenAttrs}}" class="form-control" ng-model="invoiceProductArgs.productBarcode" name="product" ng-options="product.barcode as product.barcode for product in products">
+                                <option value=""></option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="form-label" for="quantity">{{::'np.invoiceProduct.quantity' | translate}}</label>
+                            <input class="form-control" type="text" name="quantity" ng-model="invoiceProductArgs.quantity">
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="form-label" for="employeeId">{{::'np.invoiceProduct.employeeId' | translate}}</label>
+                            <input class="form-control" type="text" name="employeeId" ng-model="invoiceProductArgs.employeeId">
+                            <select ng-disabled="isDisabled" chosen="{{::$root.chosenAttrs}}" class="form-control" ng-model="invoiceProductArgs.employeeId" name="employeeId" ng-options="employee.id as employee.id for employee in employees">
+                                <option value=""></option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="form-label" for="employeeName">{{::'em.employee.lastName' | translate}}</label>
+                            <input class="form-control" type="text" name="employeeName" ng-model="invoiceProductArgs.employeeLastName">
+                            <select ng-disabled="isDisabled" chosen="{{::$root.chosenAttrs}}" class="form-control" ng-model="invoiceProductArgs.employeeLastName" name="employeeName" ng-options="employee.lastName as employee.lastName for employee in employees">
+                                <option value=""></option>
+                            </select>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-md-6">
+                                        
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="form-label" for="rack">{{::'np.invoiceProduct.rack' | translate}}</label>
+                            <input class="form-control" type="text" name="rack" ng-model="invoiceProductArgs.rackId">
+                            <select ng-disabled="isDisabled" chosen="{{::$root.chosenAttrs}}" class="form-control" ng-model="invoiceProductArgs.rackId" name="employeeId" ng-options="rack.id as rack.id for rack in racks">
+                                <option value=""></option>
+                            </select>
+                        </div>
+                    </div>
+                                        
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="form-label" for="rackCode">{{::'rc.rack.code' | translate}}</label>
+                            <input class="form-control" type="text" name="rack" ng-model="invoiceProductArgs.rackCode">
+                            <select ng-disabled="isDisabled" chosen="{{::$root.chosenAttrs}}" class="form-control" ng-model="invoiceProductArgs.rackCode" name="rackCode" ng-options="rack.code as rack.code for rack in racks">
+                                <option value=""></option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="form-label" for="invoice">{{::'np.invoiceProduct.invoice' | translate}}</label>
+                            <input class="form-control" type="text" name="invoice" ng-model="invoiceProductArgs.invoiceId">
+                            <select ng-disabled="isDisabled" chosen="{{::$root.chosenAttrs}}" class="form-control" ng-model="invoiceProductArgs.invoiceId" name="invoice" ng-options="invoice.id as invoice.id for invoice in invoices">
+                                <option value=""></option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <label class="form-label">{{::'nv.invoice.type' | translate}}</label>
+
+                        <div class="form-group">
+                            <label class="form-label" for="import">{{::'nv.invoice.import' | translate}}</label>
+                            <input type="radio" ng-model="invoiceProductArgs.invoiceType" name="import" ng-value=true />
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="export">{{::'nv.invoice.export' | translate}}</label> 
+                            <input type="radio" ng-model="invoiceProductArgs.invoiceType" name="export" ng-value=false />
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="form-label" for="afterDate">{{::'nv.invoice.afterDate' | translate}}</label>
+                            <compact-datetimepicker model="invoiceProductArgs.afterDate" name="afterDate" type="D"></compact-datetimepicker>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="form-label" for="beforeDate">{{::'nv.invoice.beforeDate' | translate}}</label>
+                            <compact-datetimepicker model="invoiceProductArgs.beforeDate" name="beforeDate" type="D"></compact-datetimepicker>
+                        </div>
+                    </div>
+                    
+                </div>
+
+            </div>
+    
+            <br/>
+            
+            <div style="text-align: center;">
+                <button class="btn btn-info" ng-click="restoreData()">{{::'global.retrieveData' | translate}}</button>
+                <button class="btn btn-info" ng-click="retrieveData()">{{::'global.search' | translate}}</button>
+            </div>
+    
+        </form>
+
+    </div>
+
+    <br/>
+
+    <legend>{{::'menu.np.list' | translate}}</legend>
+
+    <!-- TODO: pagination στον πίνακα, να εμφανίζονται σε σελίδες: π.χ. ανά 10 -->
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+
+            <thead>
+                <th ng-click="doSort('id')">{{::'np.invoiceProduct.id' | translate}}</th>
+                <th ng-click="doSort('productId')">{{::'np.invoiceProduct.product' | translate}}</th>
+                <th ng-click="doSort('invoiceId')">{{::'np.invoiceProduct.invoice' | translate}}</th>
+                <th ng-click="doSort('rackId')">{{::'np.invoiceProduct.rack' | translate}}</th>
+                <th ng-click="doSort('actionDate')">{{::'np.invoiceProduct.actionDate' | translate}}</th>                
+                <th ng-click="doSort('quantity')">{{::'np.invoiceProduct.quantity' | translate}}</th>
+                <th>{{::'global.extraActions' | translate}}</th>
+            </thead>
+
+            <tbody>
+                <tr ng-repeat="np in invoiceProducts | orderBy:sortBy:reverse">
+                    <td>{{np.id}}</td>
+                    <td>{{np.productId}}</td>
+                    <td>{{np.invoiceId}}</td>
+                    <td>{{np.rackId}}</td>
+                    <td>{{np.actionDate | date:'dd/MM/yy HH:mm:ss'}}</td>
+                    <td>{{np.quantity}}</td>
+                    <td>
+                        <button class="btn btn-info" ng-click="getInvoiceProduct(np.id)">{{::'global.open' | translate}}</button>
+                        <button class="btn btn-danger" ng-click="deleteInvoiceProduct(np.id)">{{::'global.delete' | translate}}</button>
+                    </td>
+                </tr>
+            </tbody>
+
+        </table>
+    </div>
+    
+</div>
+

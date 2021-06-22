@@ -1,0 +1,104 @@
+<div>
+    <br/>
+    
+    <button class="btn btn-primary" ng-click="newWarehouse()">{{::'global.newRecord' | translate}}</button>
+    
+    <br/>
+    <br/>
+
+    <div class="row">
+        
+        <form class="form-horizontal" id="warehouseForm" name="warehouseForm" exit-confirmation>
+            
+            <article class="col-sm-12 col-md-12">
+                
+                <uib-accordion>
+                    <uib-accordion-group is-open="warehouseArgsIsOpen">
+                        <uib-accordion-heading>
+                            {{::'global.args' | translate}}
+                            <i class="fa pull-right" ng-class="{'fa-chevron-down': warehouseArgsIsOpen, 'fa-chevron-right': !warehouseArgsIsOpen}"></i>
+                        </uib-accordion-heading>
+
+                        <article class="col-sm-12 col-md-12 col-lg-6">
+                            
+                            <div class="form-group">
+                                <label class="col-md-4 control-label">{{::'wr.warehouse.id' | translate}}</label>
+                                <div class="col-md-8">
+                                    <input type="text" class="form-control" name="id" ng-model="warehouseArgs.id" />
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="col-md-4 control-label">{{::'wr.warehouse.name' | translate}}</label>
+                                <div class="col-md-8">
+                                    <input type="text" class="form-control" name="name" ng-model="warehouseArgs.name" />
+                                </div>
+                            </div>
+                            
+                        </article>
+                        
+                        <article class="col-sm-12 col-md-12 col-lg-6">
+                            
+                            <div class="form-group">
+                                <label class="col-md-4 control-label">{{::'wr.warehouse.rackCode' | translate}}</label>
+                                <div class="col-md-8">
+                                    <select chosen="{{::$root.chosenAttrs}}" class="form-control" ng-model="warehouseArgs.rackId" name="rackCode" ng-options="rack.id as rack.code for rack in racks">
+                                        <option value=""></option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="col-md-4 control-label">{{::'wr.warehouse.description' | translate}}</label>
+                                <div class="col-md-8">
+                                    <textarea rows=3 class="form-control" name="description" ng-model="warehouseArgs.description"></textarea>
+                                </div>
+                            </div>
+                            
+                        </article>
+                        <div style="text-align: center;">
+                            <button class="btn btn-warning" ng-click="restoreData()">{{::'global.retrieveData' | translate}}</button>
+                            <button class="btn btn-info" ng-click="retrieveData()">{{::'global.search' | translate}}</button>
+                        </div>
+                    </uib-accordion-group>
+                </uib-accordion>
+
+            </article>
+
+        </form>
+
+    </div>
+
+    <br/>
+
+    <legend>{{::'menu.wr.list' | translate}}</legend>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+
+            <thead>
+                <th ng-click="doSort('id')">{{::'wr.warehouse.id' | translate}}</th>
+                <th ng-click="doSort('name')">{{::'wr.warehouse.name' | translate}}</th>
+                <th ng-click="doSort('description')">{{::'wr.warehouse.description' | translate}}</th>
+                <th>{{::'wr.warehouse.racksNumber' | translate}}</th>
+                <th>{{::'global.extraActions' | translate}}</th>
+            </thead>
+
+            <tbody>
+                <tr ng-repeat="wr in warehouses | orderBy:sortBy:reverse">
+                    <td>{{wr.id}}</td>
+                    <td>{{wr.name}}</td>
+                    <td style="max-width: 200px;">{{wr.description}}</td>
+                    <td>{{wr.racks.length}}</td>
+                    <td>
+                        <button class="btn btn-info" ng-click="getWarehouse(wr.id)">{{::'global.open' | translate}}</button>
+                        <button class="btn btn-danger" ng-click="deleteWarehouse(wr.id)">{{::'global.delete' | translate}}</button>
+                    </td>
+                </tr>
+            </tbody>
+
+        </table>
+    </div>
+    
+</div>
+

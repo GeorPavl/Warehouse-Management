@@ -1,0 +1,244 @@
+<div>
+    
+    <br/>
+
+    <div class="row">
+
+        <form class="form-horizontial">
+
+            <div style="padding-left:5%;padding-right:5%">
+
+                <legend>{{::'rc.rack.rackData' | translate}}</legend>
+
+                <fieldset ng-disabled="isDisabled">
+
+                    <div class="col-md-6">
+                        
+                        <div class="col-md-12" ng-hide="!isEditable">
+                            <div class="form-group">
+                                <label class="form-label" for="id">{{::'rc.rack.id' | translate}}</label>
+                                <input class="form-control" readonly type="text" name="id" ng-model="rack.id">
+                            </div>
+                        </div>                 
+
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="form-label" for="code">{{::'rc.rack.code' | translate}}</label>
+                                <input class="form-control" type="text" name="code" ng-model="rack.code">
+                            </div>
+                        </div> 
+
+                    </div>
+
+                    <div class="col-md-6">
+
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="form-label" for="warehouse">{{::'rc.rack.warehouse' | translate}}</label>
+                                <!-- Το input εμφανίζει και την επιλογή του select. Προς το παρόν σε σχόλια γιατί δε θέλουμε να φαίνεται το id -->
+                                <input class="form-control" type="text" name="warehouse" ng-model="rack.warehouseId">
+                                <select ng-disabled="isDisabled" chosen="{{::$root.chosenAttrs}}" class="form-control" ng-model="rack.warehouseId" name="warehouse" ng-options="warehouse.id as warehouse.name for warehouse in warehouses">
+                                    <option value=""></option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                    </div>
+
+                </fieldset>
+
+                <br/>
+
+                <div style="text-align: center;">
+                    <button class="btn btn-warning" ng-hide="!isEditable" ng-click="isDisabled=!isDisabled">{{::'global.edit' | translate}}</button>
+                    <button class="btn btn-info" ng-click="saveRack()">{{::'global.save' | translate}}</button>
+                </div>
+
+            </div>
+            
+            <br/>
+
+            <div style="padding-left:3%;padding-right:3%">
+
+                <div ng-hide="!isEditable" >
+
+                    <legend>{{::'global.lists' | translate}}</legend>
+    
+                    <div class="row">
+                
+                        <uib-tabset active="active">
+                            <uib-tab index="0" heading="{{::'menu.np' | translate}}">
+                                <div class="table-responsive">
+                                    <table class="table table-striped">
+                                        <!-- TODO: Να διορθώσω τα label από warehouse σε rack  -->
+                                        <div class="alert alert-warning" role="alert" style="display:inline-block;">
+                                            <span>{{::'wr.warehouse.invoiceActionsNumber' | translate}}: {{rack.invoices.length}}</span>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col col-md-6">
+                                                    <label for="search" class="form-label">{{'global.search' | translate}}</label>
+                                                    <input type="text" class="form-control" ng-model="invoiceProductFilter">
+                                                </div>
+                                            </div>
+                                        </div>
+                        
+                                        <thead>
+                                            <th ng-click="doSort('id')">{{::'np.invoiceProduct.id' | translate}}</th>
+                                            <th ng-click="doSort('productId')">{{::'np.invoiceProduct.product' | translate}}</th>
+                                            <th ng-click="doSort('invoiceId')">{{::'np.invoiceProduct.invoice' | translate}}</th>
+                                            <th ng-click="doSort('actionDate')">{{::'np.invoiceProduct.actionDate' | translate}}</th>
+                                            <th ng-click="doSort('quantity')">{{::'np.invoiceProduct.quantity' | translate}}</th>
+                                            <th>{{::'global.extraActions' | translate}}</th>
+                                        </thead>
+                        
+                                        <tbody>
+                                            <tr ng-repeat="np in rack.invoices | filter: invoiceProductFilter | orderBy:sortBy:reverse track by $index">
+                                                <td>{{np.id}}</td>
+                                                <td>{{np.productId}}</td>
+                                                <td>{{np.invoiceId}}</td>
+                                                <td>{{np.actionDate | date:'dd/MM/yy HH:mm:ss'}}</td>
+                                                <td>{{np.quantity}}</td>
+                                                <td>
+                                                    <button class="btn btn-info" ng-click="getInvoiceProduct(np.id)">{{::'global.open' | translate}}</button>
+                                                    <button class="btn btn-danger" ng-click="deleteInvoiceProduct(np.id)">{{::'global.delete' | translate}}</button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                        
+                                    </table>
+                                </div>    
+                            
+                            </uib-tab>
+            
+                            <uib-tab index="1" heading="{{::'menu.pr' | translate}}">
+                                <div class="table-responsive">
+                                    <table class="table table-striped"> 
+                                        
+                                        <div class="alert alert-warning" role="alert" style="display:inline-block;">
+                                            <span>{{::'wr.warehouse.productsNumber' | translate}}: {{rackProducts.length}}</span>
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col col-md-6">
+                                                    <label for="search" class="form-label">{{'global.search' | translate}}</label>
+                                                    <input type="text" class="form-control" ng-model="productFilter">
+                                                </div>
+                                            </div>
+                                        </div>
+                        
+                                        <thead>
+                                            <th ng-click="doSort('id')">{{::'pr.product.id' | translate}}</th>
+                                            <th ng-click="doSort('title')">{{::'pr.product.title' | translate}}</th>
+                                            <th ng-click="doSort('barcode')">{{::'pr.product.barcode' | translate}}</th>
+                                            <th ng-click="doSort('price')">{{::'pr.product.price' | translate}}</th>
+                                            <th ng-click="doSort('description')">{{::'pr.product.description' | translate}}</th>
+                                            <th>{{::'global.extraActions' | translate}}</th>
+                                        </thead>
+                        
+                                        <tbody>
+                                            <tr ng-repeat="pr in rackProducts | filter: productFilter | orderBy:sortBy:reverse track by $index">
+                                                <td>{{pr.id}}</td>
+                                                <td>{{pr.title}}</td>
+                                                <td>{{pr.barcode}}</td>
+                                                <td>{{pr.price}}</td>
+                                                <td>{{pr.description}}</td>
+                                                <td><button class="btn btn-info" ng-click="getProduct(pr.id)">{{::'global.open' | translate}}</button></td>
+                                            </tr>
+                                        </tbody>
+                        
+                                    </table>
+                                </div>    
+                            </uib-tab>
+            
+                            <uib-tab index="2" heading="{{::'menu.nv' | translate}}">
+                                <div class="table-responsive">
+                                    <table class="table table-striped">
+                                        
+                                        
+                                        <div class="alert alert-warning" role="alert" style="display:inline-block;">
+                                            <span>{{::'wr.warehouse.invoicesNumber' | translate}}: {{rackInvoices.length}}</span>
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col col-md-6">
+                                                    <label for="search" class="form-label">{{'global.search' | translate}}</label>
+                                                    <input type="text" class="form-control" ng-model="invoiceFilter">
+                                                </div>
+                                            </div>
+                                        </div>
+                        
+                                        <thead>
+                                            <th ng-click="doSort('id')">{{::'nv.invoice.id' | translate}}</th>
+                                            <th ng-click="doSort('date')">{{::'nv.invoice.date' | translate}}</th>
+                                            <th ng-click="doSort('invoiceType')">{{::'nv.invoice.type' | translate}}</th>
+                                            <th ng-click="doSort('employeeId')">{{::'nv.invoice.employee' | translate}}</th>
+                                            <th ng-click="doSort('description')">{{::'nv.invoice.description' | translate}}</th>
+                                            <th>{{::'global.extraActions' | translate}}</th>
+                                        </thead>
+                        
+                                        <tbody>
+                                            <tr ng-repeat="rnv in rackInvoices | filter: invoiceFilter | orderBy:sortBy:reverse track by $index">
+                                                <td>{{rnv.id}}</td>
+                                                <td>{{rnv.date | date:'dd/MM/yy HH:mm:ss'}}</td>
+                                                <td>{{rnv.invoiceType}}</td>
+                                                <td>{{rnv.employeeId}}</td>
+                                                <td>{{rnv.description}}</td>
+                                                <td><button class="btn btn-info" ng-click="getInvoice(rnv.id)">{{::'global.open' | translate}}</button></td>
+                                            </tr>
+                                        </tbody>
+                        
+                                    </table>
+                                </div>    
+                            </uib-tab>
+                                
+                            </uib-tab>
+                        </uib-tabset>
+                        
+                    </div>
+                
+                </div>
+
+                <div>
+
+                    <div ng-repeat="input in inputs track by $index">
+                        <form class="horizontial-form">
+                            <div class="row">
+                                <div class="form-inline" style="margin-bottom: 1%;margin-top:2%;">
+                                    <label for="product" class="form-label">{{::'np.invoiceProduct.product' | translate}}</label>
+                                    <input type="text" name="product" class="form-control" ng-model="invoiceProducts[$index].productId">
+                                    <select chosen="{{::$root.chosenAttrs}}" class="form-control" ng-model="invoiceProducts[$index].productId" name="product" ng-options="product.id as product.title for product in products">
+                                        <option value=""></option>
+                                    </select>
+                                    <label for="invoice" class="form-label">{{::'np.invoiceProduct.invoice' | translate}}</label>
+                                    <input type="text" name="invoice" class="form-control" ng-model="invoiceProducts[$index].invoiceId">
+                                    <select chosen="{{::$root.chosenAttrs}}" class="form-control" ng-model="invoiceProducts[$index].invoiceId" name="invoice" ng-options="invoice.id as invoice.id for invoice in invoices">
+                                        <option value=""></option>
+                                    </select>
+                                    <label for="quantity" class="form-label">{{::'np.invoiceProduct.quantity' | translate}}</label>
+                                    <input type="text" name="quantity" class="form-control" ng-model="invoiceProducts[$index].quantity">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+            
+                    <br/>
+            
+                    <!-- Δεν λειτουργούν τα favicon / Έχω κάνει inject το script στην index -->
+                    <button class="btn btn-info" ng-click="moreInputs()" ng-disabled="isDisabled" style="margin-bottom: 3%;">{{::'rc.rack.addInvoiceAction' | translate}} <i class="fa-solid fa-plus"></i></button>
+                    
+                </div>
+
+            </div>
+            
+
+            <br/>
+        
+        </form>
+
+    </div>
+
+</div>

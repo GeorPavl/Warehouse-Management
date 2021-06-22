@@ -1,0 +1,26 @@
+{
+
+    "pr.product.productData" : "Στοιχεία Προϊόντος",
+    "pr.product.product" : "Προϊόν",
+
+    "pr.product.id" : "Α/Α",
+    "pr.product.title" : "Τίτλος",
+    "pr.product.barcode" : "Κωδικός Barcode",
+    "pr.product.description" : "Περιγραφή Προϊόντος",
+    "pr.product.price" : "Τιμή",
+    "pr.product.invoice": "Απόδειξη",
+    "pr.product.rack": "Ράφι",
+    "pr.product.warehouse": "Αποθήκη",
+
+    "pr.product.stock" : "Απόθεμα",
+    "pr.product.stockUntilNow" : "Απόθεμα έως σήμερα",
+    "pr.product.stockDate" : "Ημερομηνία έως",
+    "pr.product.findStock": "Εύρεση Αποθέματος μέχρι",
+
+    "pr.product.saveSuccess" : "Το προϊόν αποθηκεύτηκε με επιτυχία",
+    "pr.product.deleteSuccess" : "Το προϊόν διαγράφηκε με επιτυχία",
+
+    "pr.product.addInvoiceAction": "Προσθήκη Ενέργειας Απόδειξης",
+    "pr.product.invoiceActionsNumber" : "Αριθμός Ενεργειών Αποδείξεων"
+
+}

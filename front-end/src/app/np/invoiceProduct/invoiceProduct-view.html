@@ -1,0 +1,148 @@
+<div>
+    
+    <br/>
+
+    <div class="row">
+
+        <form class="form-horizontial">
+
+            <div style="padding-left:5%;padding-right:5%">
+
+                <legend>{{::'np.invoiceProduct.invoiceProductData' | translate}}</legend>
+
+                <fieldset ng-disabled="isDisabled">
+
+                    <div class="row">
+
+                        <div class="col-md-6">
+                                
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="form-label" for="id">{{::'np.invoiceProduct.id' | translate}}</label>
+                                    <input class="form-control" type="text" name="id" ng-model="invoiceProduct.id">
+                                </div>
+                            </div>                 
+        
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="form-label" for="product">{{::'np.invoiceProduct.product' | translate}}</label>
+                                    <select ng-disabled="isDisabled" chosen="{{::$root.chosenAttrs}}" class="form-control" ng-model="invoiceProduct.productId" name="product" ng-options="product.id as product.id for product in products">
+                                        <option value=""></option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="form-label" for="productTitle">{{::'pr.product.title' | translate}}</label>
+                                    <select ng-disabled="isDisabled" chosen="{{::$root.chosenAttrs}}" class="form-control" ng-model="invoiceProduct.productTitle" name="product" ng-options="product.title as product.title for product in products">
+                                        <option value=""></option>
+                                    </select>
+                                </div>
+                            </div>
+        
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="form-label" for="productBarcode">{{::'pr.product.barcode' | translate}}</label>
+                                    <select ng-disabled="isDisabled" chosen="{{::$root.chosenAttrs}}" class="form-control" ng-model="invoiceProduct.productBarcode" name="product" ng-options="product.barcode as product.barcode for product in products">
+                                        <option value=""></option>
+                                    </select>
+                                </div>
+                            </div>
+        
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="form-label" for="quantity">{{::'np.invoiceProduct.quantity' | translate}}</label>
+                                    <input class="form-control" type="text" name="quantity" ng-model="invoiceProduct.quantity">
+                                </div>
+                            </div>
+        
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="form-label" for="employeeId">{{::'np.invoiceProduct.employeeId' | translate}}</label>
+                                    <select ng-disabled="isDisabled" chosen="{{::$root.chosenAttrs}}" class="form-control" ng-model="invoiceProduct.employeeId" name="employeeId" ng-options="employee.id as employee.id for employee in employees">
+                                        <option value=""></option>
+                                    </select>
+                                </div>
+                            </div>
+        
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="form-label" for="employeeName">{{::'em.employee.lastName' | translate}}</label>
+                                    <select ng-disabled="isDisabled" chosen="{{::$root.chosenAttrs}}" class="form-control" ng-model="invoiceProduct.employeeLastName" name="employeeName" ng-options="employee.lastName as employee.lastName for employee in employees">
+                                        <option value=""></option>
+                                    </select>
+                                </div>
+                            </div>
+        
+                        </div>
+        
+                        <div class="col-md-6">
+                                                
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="form-label" for="rack">{{::'np.invoiceProduct.rack' | translate}}</label>
+                                    <select ng-disabled="isDisabled" chosen="{{::$root.chosenAttrs}}" class="form-control" ng-model="invoiceProduct.rackId" name="employeeId" ng-options="rack.id as rack.id for rack in racks">
+                                        <option value=""></option>
+                                    </select>
+                                </div>
+                            </div>
+                                                
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="form-label" for="rackCode">{{::'rc.rack.code' | translate}}</label>
+                                    <select ng-disabled="isDisabled" chosen="{{::$root.chosenAttrs}}" class="form-control" ng-model="invoiceProduct.rackCode" name="rackCode" ng-options="rack.code as rack.code for rack in racks">
+                                        <option value=""></option>
+                                    </select>
+                                </div>
+                            </div>
+        
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="form-label" for="invoice">{{::'np.invoiceProduct.invoice' | translate}}</label>
+                                    <select ng-disabled="isDisabled" chosen="{{::$root.chosenAttrs}}" class="form-control" ng-model="invoiceProduct.invoiceId" name="invoice" ng-options="invoice.id as invoice.id for invoice in invoices">
+                                        <option value=""></option>
+                                    </select>
+                                </div>
+                            </div>
+        
+                            <div class="col-md-12">
+                                <label class="form-label">{{::'nv.invoice.type' | translate}}</label>
+        
+                                <div class="form-group">
+                                    <label class="form-label" for="import">{{::'nv.invoice.import' | translate}}</label>
+                                    <input type="radio" ng-model="invoiceProduct.invoiceType" name="import" ng-value=true />
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" for="export">{{::'nv.invoice.export' | translate}}</label> 
+                                    <input type="radio" ng-model="invoiceProduct.invoiceType" name="export" ng-value=false />
+                                </div>
+                            </div>
+        
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="form-label" for="actionDate">{{::'nv.invoice.afterDate' | translate}}</label>
+                                    <compact-datetimepicker model="invoiceProduct.actionDate" name="actionDate" type="D"></compact-datetimepicker>
+                                </div>
+                            </div>
+                            
+                        </div>
+        
+                    </div>
+
+                </fieldset>
+
+                <br/>
+
+                <div style="text-align: center;">
+                    <button class="btn btn-warning" ng-hide="!isEditable" ng-click="isDisabled=!isDisabled">{{::'global.edit' | translate}}</button>
+                    <button class="btn btn-info" ng-click="saveInvoiceProduct()">{{::'global.save' | translate}}</button>
+                </div>
+
+            </div>
+        
+        </form>
+
+    </div>
+
+</div>

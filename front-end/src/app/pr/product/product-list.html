@@ -1,0 +1,123 @@
+<div>
+    <br/>
+    
+    <button class="btn btn-primary" ng-click="newProduct()">{{::'global.newRecord' | translate}}</button>
+    
+    <br/>
+    <br/>
+
+    <div class="row">
+
+        <form class="form-horizontial" style="padding-left:5%;padding-right:5%">
+
+            <legend>{{::'global.args' | translate}}</legend>
+    
+            <div class="row">
+
+                <div class="col-md-6">
+                    
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="form-label" for="id">{{::'pr.product.id' | translate}}</label>
+                            <input class="form-control" type="text" name="id" ng-model="productArgs.id">
+                        </div>
+                    </div>                 
+
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="form-label" for="title">{{::'pr.product.title' | translate}}</label>
+                            <input class="form-control" type="text" name="title" ng-model="productArgs.title">
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="form-label" for="description">{{::'pr.product.description' | translate}}</label>
+                            <input class="form-control" type="text" name="title" ng-model="productArgs.description">
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-md-6">
+
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="form-label" for="price">{{::'pr.product.price' | translate}}</label>
+                            <input class="form-control" type="text" name="price" ng-model="productArgs.price">
+                        </div>
+                    </div>
+                                      
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="form-label" for="invoiceId">{{::'np.invoiceProduct.invoice' | translate}}</label>
+                            <input class="form-control" type="text" name="invoiceId" ng-model="productArgs.invoiceId">
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="form-label" for="rackId">{{::'np.invoiceProduct.rack' | translate}}</label>
+                            <input class="form-control" type="text" name="rackId" ng-model="productArgs.rackId">
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="form-label" for="warehouseId">{{::'menu.wr' | translate}}</label>
+                            <input class="form-control" type="text" name="warehouseId" ng-model="productArgs.warehouseId">
+                        </div>
+                    </div>
+                    
+                </div>
+
+            </div>
+    
+            <br/>
+            
+            <div style="text-align: center;">
+                <button class="btn btn-warning" ng-click="restoreData()">{{::'global.retrieveData' | translate}}</button>
+                <button class="btn btn-info" ng-click="retrieveData()">{{::'global.search' | translate}}</button>
+            </div>
+    
+        </form>
+
+    </div>
+
+    <br/>
+
+    <legend>{{::'menu.pr.list' | translate}}</legend>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+
+            <thead>
+                <th ng-click="doSort('id')">{{::'pr.product.id' | translate}}</th>
+                <th ng-click="doSort('title')">{{::'pr.product.title' | translate}}</th>
+                <th ng-click="doSort('barcode')">{{::'pr.product.barcode' | translate}}</th>
+                <th ng-click="doSort('price')">{{::'pr.product.price' | translate}}</th>
+                <th ng-click="doSort('description')">{{::'pr.product.description' | translate}}</th>
+                <th>{{::'pr.product.invoiceActionsNumber' | translate}}</th>
+                <th>{{::'global.extraActions' | translate}}</th>
+            </thead>
+
+            <tbody>
+                <tr ng-repeat="pr in products | orderBy:sortBy:reverse">
+                    <td>{{pr.id}}</td>
+                    <td>{{pr.title}}</td>
+                    <td>{{pr.barcode}}</td>
+                    <td>{{pr.price}}</td>
+                    <td>{{pr.description}}</td>
+                    <td>{{pr.invoices.length}}</td>
+                    <td>
+                        <button class="btn btn-info" ng-click="getProduct(pr.id)">{{::'global.open' | translate}}</button>
+                        <button class="btn btn-danger" ng-click="deleteProduct(pr.id)">{{::'global.delete' | translate}}</button>
+                    </td>
+                </tr>
+            </tbody>
+
+        </table>
+    </div>
+    
+</div>
+
